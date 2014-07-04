@@ -42,7 +42,11 @@ s=5:6;
 cl = repmat(':', N,1);
 times2 = [times(:,h), cl, times(:,m), cl, times(:,s)];
 fullDateTime = [dstr, repmat(' ',N,1), times2];
-ft = fractionalTime([dstr, repmat(' ',N,1), times2]);
+% ft = fractionalTime([dstr, repmat(' ',N,1), times2]);
+% calculate fractional time by hand
+for j=1:size(times, 1)
+    ft(j) = (str2double(times(j,h))*3600 + str2double(times(j,m))*60 + str2double(times(j,s)))/(24*60*60);
+end
 
 S.t = dnum + ft; %serial date number
 S.elapsed = zeros(N,1);
