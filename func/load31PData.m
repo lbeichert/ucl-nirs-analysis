@@ -48,7 +48,7 @@ for j=1:size(times, 1)
     ft(j) = (str2double(times(j,h))*3600 + str2double(times(j,m))*60 + str2double(times(j,s)))/(24*60*60);
 end
 
-S.t = dnum + ft; %serial date number
+S.t = dnum + ft'; %serial date number
 S.elapsed = zeros(N,1);
 for n = 1:N
     S.elapsed(n) = etime(datevec(S.t(n)), datevec(S.t(1)));
